@@ -3,6 +3,8 @@ package com.api.etapa2_API.entity;
 import com.api.etapa2_API.enums.CursoDificuldade;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,6 +18,8 @@ public class CursoEntity {
 	
 	private String titulo;
 	private String descricao;
+	
+	@Enumerated(EnumType.STRING)
 	private CursoDificuldade dificuldade;
 	
 	public CursoEntity() {

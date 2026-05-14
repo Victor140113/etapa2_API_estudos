@@ -3,6 +3,8 @@ package com.api.etapa2_API.entity;
 import com.api.etapa2_API.enums.UsuarioTipo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +19,8 @@ public class UsuarioEntity {
 	private String nome;
 	private String email;
 	private String senha;
+	
+	@Enumerated(EnumType.STRING)
 	private UsuarioTipo tipo;
 	
 	public UsuarioEntity() {
