@@ -1,0 +1,50 @@
+package com.api.etapa2_API.dto.request;
+
+import com.api.etapa2_API.enums.UsuarioTipo;
+
+public class CadastroRequest {
+
+	private String nome;
+	private String email;
+	private String senha;
+	private UsuarioTipo tipo;
+	
+	public CadastroRequest(String nome, String email, String senha, UsuarioTipo tipo) {
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.tipo = tipo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public UsuarioTipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(UsuarioTipo tipo) {
+		this.tipo = tipo;
+	}
+}
