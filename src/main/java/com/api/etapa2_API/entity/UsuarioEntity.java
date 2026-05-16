@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class UsuarioEntity {
@@ -22,6 +23,9 @@ public class UsuarioEntity {
 	
 	@Enumerated(EnumType.STRING)
 	private UsuarioTipo tipo;
+	
+	@OneToMany(mappedBy = "usuario")
+	private MatriculaEntity matricula;
 	
 	public UsuarioEntity() {
 		
@@ -72,6 +76,14 @@ public class UsuarioEntity {
 
 	public void setTipo(UsuarioTipo tipo) {
 		this.tipo = tipo;
+	}
+
+	public MatriculaEntity getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(MatriculaEntity matricula) {
+		this.matricula = matricula;
 	}
 	
 }

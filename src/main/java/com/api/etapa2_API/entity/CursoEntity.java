@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class CursoEntity {
@@ -21,6 +22,9 @@ public class CursoEntity {
 	
 	@Enumerated(EnumType.STRING)
 	private CursoDificuldade dificuldade;
+	
+	@OneToMany(mappedBy = "curso")
+	private MatriculaEntity matricula;
 	
 	public CursoEntity() {
 		
@@ -62,6 +66,14 @@ public class CursoEntity {
 
 	public void setDificuldade(CursoDificuldade dificuldade) {
 		this.dificuldade = dificuldade;
+	}
+
+	public MatriculaEntity getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(MatriculaEntity matricula) {
+		this.matricula = matricula;
 	}
 	
 }
