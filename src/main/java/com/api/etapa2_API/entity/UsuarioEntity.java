@@ -1,5 +1,8 @@
 package com.api.etapa2_API.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.api.etapa2_API.enums.UsuarioTipo;
 
 import jakarta.persistence.Entity;
@@ -25,7 +28,7 @@ public class UsuarioEntity {
 	private UsuarioTipo tipo;
 	
 	@OneToMany(mappedBy = "usuario")
-	private MatriculaEntity matricula;
+	private List<MatriculaEntity> matricula = new ArrayList<>();
 	
 	public UsuarioEntity() {
 		

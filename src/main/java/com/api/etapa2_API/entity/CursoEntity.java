@@ -1,5 +1,8 @@
 package com.api.etapa2_API.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.api.etapa2_API.enums.CursoDificuldade;
 
 import jakarta.persistence.Entity;
@@ -24,7 +27,7 @@ public class CursoEntity {
 	private CursoDificuldade dificuldade;
 	
 	@OneToMany(mappedBy = "curso")
-	private MatriculaEntity matricula;
+	private List<MatriculaEntity> matricula = new ArrayList<>();
 	
 	public CursoEntity() {
 		
