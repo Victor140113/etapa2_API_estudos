@@ -1,6 +1,9 @@
 package com.api.etapa2_API.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.etapa2_API.dto.request.UsuarioCadastroRequest;
 import com.api.etapa2_API.dto.request.UsuarioLoginRequest;
 import com.api.etapa2_API.dto.response.UsuarioCadastroResponse;
+import com.api.etapa2_API.dto.response.UsuarioListarResponse;
 import com.api.etapa2_API.dto.response.UsuarioLoginResponse;
 import com.api.etapa2_API.service.UsuarioService;
 
@@ -39,6 +43,12 @@ public class UsuarioController {
 		if(loginResult == null) return ResponseEntity.status(400).build();
 		
 		return ResponseEntity.ok(loginResult);
+	}
+	
+	// Retornar os nomes dos usuários existentes;
+	@GetMapping("/usuario")
+	public ResponseEntity<List<UsuarioListarResponse>> listarUsuarios(){
+		return ResponseEntity.ok(service.listarUsuarios());
 	}
 	
 }

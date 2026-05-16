@@ -81,12 +81,14 @@ public class UsuarioEntity {
 		this.tipo = tipo;
 	}
 
-	public MatriculaEntity getMatricula() {
+	public List<MatriculaEntity> getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(MatriculaEntity matricula) {
+	public void setMatricula(List<MatriculaEntity> matricula) {
 		this.matricula = matricula;
 	}
+
+	
 	
 }
