@@ -1,10 +1,13 @@
 package com.api.etapa2_API.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.api.etapa2_API.dto.request.UsuarioCadastroRequest;
 import com.api.etapa2_API.dto.request.UsuarioLoginRequest;
 import com.api.etapa2_API.dto.response.UsuarioCadastroResponse;
+import com.api.etapa2_API.dto.response.UsuarioListarResponse;
 import com.api.etapa2_API.dto.response.UsuarioLoginResponse;
 import com.api.etapa2_API.entity.UsuarioEntity;
 import com.api.etapa2_API.repository.UsuarioRepository;
@@ -41,6 +44,11 @@ public class UsuarioService {
 		} else {
 			return new UsuarioLoginResponse("Login Efetuado com Sucesso!");
 		}
+	}
+	
+	// Listar Usuários;
+	public List<UsuarioListarResponse> listarUsuarios(){
+		return database.findAll().stream().map(usuario -> new UsuarioListarResponse(usuario.getNome(), usuario.getEmail())).toList();
 	}
 	
 	//====================================================

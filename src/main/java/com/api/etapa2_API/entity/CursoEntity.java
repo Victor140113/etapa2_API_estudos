@@ -71,12 +71,14 @@ public class CursoEntity {
 		this.dificuldade = dificuldade;
 	}
 
-	public MatriculaEntity getMatricula() {
+	public List<MatriculaEntity> getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(MatriculaEntity matricula) {
+	public void setMatricula(List<MatriculaEntity> matricula) {
 		this.matricula = matricula;
 	}
+
+	
 	
 }
