@@ -2,14 +2,14 @@ package com.api.etapa2_API.dto.request;
 
 import com.api.etapa2_API.enums.UsuarioTipo;
 
-public class CadastroRequest {
+public class UsuarioCadastroRequest {
 
 	private String nome;
 	private String email;
 	private String senha;
 	private UsuarioTipo tipo;
 	
-	public CadastroRequest(String nome, String email, String senha, UsuarioTipo tipo) {
+	public UsuarioCadastroRequest(String nome, String email, String senha, UsuarioTipo tipo) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
