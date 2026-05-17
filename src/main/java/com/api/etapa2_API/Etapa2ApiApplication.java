@@ -9,5 +9,4 @@ public class Etapa2ApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Etapa2ApiApplication.class, args);
 	}
-
 }

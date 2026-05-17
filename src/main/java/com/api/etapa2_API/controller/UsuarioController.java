@@ -6,14 +6,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.etapa2_API.dto.request.UsuarioAtualizarRequest;
 import com.api.etapa2_API.dto.request.UsuarioCadastroRequest;
 import com.api.etapa2_API.dto.request.UsuarioLoginRequest;
-import com.api.etapa2_API.dto.response.UsuarioCadastroResponse;
+import com.api.etapa2_API.dto.response.UsuarioDefaultResponse;
 import com.api.etapa2_API.dto.response.UsuarioListarResponse;
-import com.api.etapa2_API.dto.response.UsuarioLoginResponse;
 import com.api.etapa2_API.service.UsuarioService;
 
 @RestController
@@ -27,9 +28,9 @@ public class UsuarioController {
 	
 	// Cadastro de Usuário;
 	@PostMapping("/usuario")
-	public ResponseEntity<UsuarioCadastroResponse> cadastrarUsuario(@RequestBody UsuarioCadastroRequest dados){
+	public ResponseEntity<UsuarioDefaultResponse> cadastrarUsuario(@RequestBody UsuarioCadastroRequest dados){
 		
-		UsuarioCadastroResponse cadastroResult = service.cadastrarUsuario(dados);
+		UsuarioDefaultResponse cadastroResult = service.cadastrarUsuario(dados);
 		
 		if(cadastroResult == null) return ResponseEntity.status(409).build();
 		
@@ -38,8 +39,8 @@ public class UsuarioController {
 	
 	// Login de Usuário;
 	@PostMapping("/usuario/login")
-	public ResponseEntity<UsuarioLoginResponse> login(@RequestBody UsuarioLoginRequest dados){
-		UsuarioLoginResponse loginResult = service.login(dados);
+	public ResponseEntity<UsuarioDefaultResponse> login(@RequestBody UsuarioLoginRequest dados){
+		UsuarioDefaultResponse loginResult = service.login(dados);
 		
 		if(loginResult == null) return ResponseEntity.status(400).build();
 		
@@ -60,6 +61,15 @@ public class UsuarioController {
 		
 		return ResponseEntity.ok(usuario);
 		
+	}
+	
+	// Atualizar nome, email e senha de usuário por ID;
+	@PutMapping("/usuario/{id}")
+	public ResponseEntity<UsuarioDefaultResponse> atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioAtualizarRequest dados){
+		UsuarioDefaultResponse usuario = service.atualizarUsuario(id, dados);
+		if(usuario == null) return ResponseEntity.status(404).build();
+		
+		return ResponseEntity.ok(usuario);
 	}
 	
 }
