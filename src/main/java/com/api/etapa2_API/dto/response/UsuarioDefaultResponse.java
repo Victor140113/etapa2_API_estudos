@@ -1,10 +1,10 @@
 package com.api.etapa2_API.dto.response;
 
-public class UsuarioLoginResponse {
+public class UsuarioDefaultResponse {
 
 	private String mensagem;
 	
-	public UsuarioLoginResponse(String mensagem) {
+	public UsuarioDefaultResponse(String mensagem) {
 		this.mensagem = mensagem;
 	}
 
@@ -15,4 +15,5 @@ public class UsuarioLoginResponse {
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
+	
 }
