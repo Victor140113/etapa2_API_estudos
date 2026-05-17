@@ -21,7 +21,8 @@ Devolve todos os nomes e emails de usuários existentes no banco;
     GET /usuario/id
 Devolve um usuário pelo ID;
 
-
+    PUT /usuario/id
+Atualiza nome, email e senha do usuário por ID;
 
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
