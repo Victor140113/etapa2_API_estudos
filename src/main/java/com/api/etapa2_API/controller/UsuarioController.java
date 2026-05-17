@@ -3,6 +3,7 @@ package com.api.etapa2_API.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,6 +68,16 @@ public class UsuarioController {
 	@PutMapping("/usuario/{id}")
 	public ResponseEntity<UsuarioDefaultResponse> atualizarUsuario(@PathVariable Long id, @RequestBody UsuarioAtualizarRequest dados){
 		UsuarioDefaultResponse usuario = service.atualizarUsuario(id, dados);
+		if(usuario == null) return ResponseEntity.status(404).build();
+		
+		return ResponseEntity.ok(usuario);
+	}
+	
+	// Deletar usuário por ID;
+	@DeleteMapping("/usuario/{id}")
+	public ResponseEntity<UsuarioDefaultResponse> deletarUsuario(@PathVariable Long id){
+		UsuarioDefaultResponse usuario = service.deletarUsuario(id);
+		
 		if(usuario == null) return ResponseEntity.status(404).build();
 		
 		return ResponseEntity.ok(usuario);

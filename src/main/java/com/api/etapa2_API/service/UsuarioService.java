@@ -73,6 +73,15 @@ public class UsuarioService {
 		
 	}
 	
+	// Deletar usuário;
+	public UsuarioDefaultResponse deletarUsuario(Long id) {
+		if(database.existsById(id)) {
+			database.delete(database.findById(id).orElse(null));
+			return new UsuarioDefaultResponse("Sua conta foi deletada com sucesso!");
+		}
+		return null;
+	}
+	
 	//====================================================
 	
 	
