@@ -24,5 +24,8 @@ Devolve um usuário pelo ID;
     PUT /usuario/id
 Atualiza nome, email e senha do usuário por ID;
 
+    DELETE /usuario/id
+Deleta usuário por ID;
+
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
