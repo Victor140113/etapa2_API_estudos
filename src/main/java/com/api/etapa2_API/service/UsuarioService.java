@@ -51,6 +51,14 @@ public class UsuarioService {
 		return database.findAll().stream().map(usuario -> new UsuarioListarResponse(usuario.getNome(), usuario.getEmail())).toList();
 	}
 	
+	// Listar Usuário por ID;
+	public UsuarioListarResponse listarUsuarioPorId(Long id) {
+		UsuarioEntity usuario = database.findById(id).orElse(null);
+		if(usuario == null) return null;
+		
+		return new UsuarioListarResponse(usuario.getNome(), usuario.getEmail());
+	}
+	
 	//====================================================
 	
 	
