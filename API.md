@@ -27,5 +27,12 @@ Atualiza nome, email e senha do usuário por ID;
     DELETE /usuario/id
 Deleta usuário por ID;
 
+---
+
+### Curso:
+
+    POST /curso/idUsuario
+Cria um curso (usuário deve ser Professor) utilizando o Id do usuário pra identificar o criador;
+
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
