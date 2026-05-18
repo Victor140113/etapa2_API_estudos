@@ -1,9 +1,12 @@
 package com.api.etapa2_API.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.api.etapa2_API.dto.request.CursoCriarRequest;
 import com.api.etapa2_API.dto.response.CursoDefaultResponse;
+import com.api.etapa2_API.dto.response.CursoListarResponse;
 import com.api.etapa2_API.entity.CursoEntity;
 import com.api.etapa2_API.entity.UsuarioEntity;
 import com.api.etapa2_API.enums.UsuarioTipo;
@@ -44,7 +47,12 @@ public class CursoService {
 		
 		database.save(curso);
 		return new CursoDefaultResponse("Curso criado com sucesso!");
+	}
+	
+	// Retorna cursos existentes;
+	public List<CursoListarResponse> listarCursos(){
 		
+		return database.findAll().stream().map(curso -> new CursoListarResponse(curso.getCursoDono().getNome(), curso.getTitulo(), curso.getDescricao(), curso.getDificuldade())).toList();
 	}
 	
 	
