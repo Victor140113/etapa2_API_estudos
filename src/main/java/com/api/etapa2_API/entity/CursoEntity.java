@@ -8,9 +8,11 @@ import com.api.etapa2_API.enums.CursoDificuldade;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -26,6 +28,9 @@ public class CursoEntity {
 	@Enumerated(EnumType.STRING)
 	private CursoDificuldade dificuldade;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private UsuarioEntity cursoDono;
+	
 	@OneToMany(mappedBy = "curso")
 	private List<MatriculaEntity> matricula = new ArrayList<>();
 	
@@ -33,10 +38,11 @@ public class CursoEntity {
 		
 	}
 	
-	public CursoEntity(String titulo, String descricao, CursoDificuldade dificuldade) {
+	public CursoEntity(String titulo, String descricao, CursoDificuldade dificuldade, UsuarioEntity cursoDono) {
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.dificuldade = dificuldade;
+		this.cursoDono = cursoDono;
 	}
 
 	public Long getId() {
@@ -77,6 +83,14 @@ public class CursoEntity {
 
 	public void setMatricula(List<MatriculaEntity> matricula) {
 		this.matricula = matricula;
+	}
+
+	public UsuarioEntity getCursoDono() {
+		return cursoDono;
+	}
+
+	public void setCursoDono(UsuarioEntity cursoDono) {
+		this.cursoDono = cursoDono;
 	}
 
 	

@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.api.etapa2_API.enums.UsuarioTipo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,7 +29,10 @@ public class UsuarioEntity {
 	@Enumerated(EnumType.STRING)
 	private UsuarioTipo tipo;
 	
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "cursoDono", fetch = FetchType.LAZY)
+	private List<CursoEntity> listaDeCursos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
 	private List<MatriculaEntity> matricula = new ArrayList<>();
 	
 	public UsuarioEntity() {
@@ -87,6 +92,14 @@ public class UsuarioEntity {
 
 	public void setMatricula(List<MatriculaEntity> matricula) {
 		this.matricula = matricula;
+	}
+
+	public List<CursoEntity> getListaDeCursos() {
+		return listaDeCursos;
+	}
+
+	public void setListaDeCursos(List<CursoEntity> listaDeCursos) {
+		this.listaDeCursos = listaDeCursos;
 	}
 
 	

@@ -9,16 +9,20 @@ import com.api.etapa2_API.dto.request.UsuarioCadastroRequest;
 import com.api.etapa2_API.dto.request.UsuarioLoginRequest;
 import com.api.etapa2_API.dto.response.UsuarioDefaultResponse;
 import com.api.etapa2_API.dto.response.UsuarioListarResponse;
+import com.api.etapa2_API.entity.CursoEntity;
 import com.api.etapa2_API.entity.UsuarioEntity;
+import com.api.etapa2_API.repository.CursoRepository;
 import com.api.etapa2_API.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
 
 	private final UsuarioRepository database;
+	private final CursoRepository cursoRepository;
 	
-	public UsuarioService(UsuarioRepository database) {
+	public UsuarioService(UsuarioRepository database, CursoRepository cursoRepository) {
 		this.database = database;
+		this.cursoRepository = cursoRepository;
 	}
 	
 	//================Métodos Externos====================
@@ -75,11 +79,18 @@ public class UsuarioService {
 	
 	// Deletar usuário;
 	public UsuarioDefaultResponse deletarUsuario(Long id) {
-		if(database.existsById(id)) {
-			database.delete(database.findById(id).orElse(null));
-			return new UsuarioDefaultResponse("Sua conta foi deletada com sucesso!");
+		
+		UsuarioEntity usuario = database.findById(id).orElse(null);
+		if(usuario == null) return null;
+				
+		for(CursoEntity curso : usuario.getListaDeCursos()) {
+			curso.setCursoDono(null);
+			cursoRepository.save(curso);
 		}
-		return null;
+		
+		database.delete(usuario);
+		
+		return new UsuarioDefaultResponse("Sua conta foi deletada com sucesso!");
 	}
 	
 	//====================================================
@@ -87,7 +98,15 @@ public class UsuarioService {
 	
 	//===================Métodos Internos=================
 	
-	
+	// Retorna usuário;
+	public UsuarioEntity getUsuarioPorId(Long id) {
+		
+		UsuarioEntity usuario = database.findById(id).orElse(null);
+		if(usuario == null) return null;
+		
+		return usuario;
+		
+	}
 	
 	//====================================================
 }
