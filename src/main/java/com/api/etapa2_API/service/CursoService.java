@@ -55,7 +55,16 @@ public class CursoService {
 		return database.findAll().stream().map(curso -> new CursoListarResponse(curso.getCursoDono().getNome(), curso.getTitulo(), curso.getDescricao(), curso.getDificuldade())).toList();
 	}
 	
-	
+	// Retorna curso por ID;
+	public CursoListarResponse listarCursoPorId(Long id) {
+		
+		CursoEntity curso = database.findById(id).orElse(null);
+		if(curso == null) return null;
+		String nomeCriador = curso.getCursoDono() == null ? "Desconhecido" : curso.getCursoDono().getNome();
+		
+		return new CursoListarResponse(nomeCriador, curso.getTitulo(), curso.getDescricao(), curso.getDificuldade());
+		
+	}
 	
 	//============================Métodos Internos=========================
 	

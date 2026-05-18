@@ -37,4 +37,13 @@ public class CursoController {
 	public ResponseEntity<List<CursoListarResponse>> listarCursos(){
 		return ResponseEntity.ok(service.listarCursos());
 	}
+	
+	// Retorna curso por ID;
+	@GetMapping("/curso/{id}")
+	public ResponseEntity<CursoListarResponse> listarCursoPorId(@PathVariable Long id){
+		CursoListarResponse curso = service.listarCursoPorId(id);
+		if(curso == null) return ResponseEntity.status(404).build();
+		
+		return ResponseEntity.ok(curso);
+	}
 }
