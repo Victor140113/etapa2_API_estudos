@@ -34,5 +34,8 @@ Deleta usuário por ID;
     POST /curso/idUsuario
 Cria um curso (usuário deve ser Professor) utilizando o Id do usuário pra identificar o criador;
 
+    GET /curso
+Devolve todos os cursos existentes com o nome de seu criador;
+
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
