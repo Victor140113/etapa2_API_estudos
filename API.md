@@ -37,5 +37,8 @@ Cria um curso (usuário deve ser Professor) utilizando o Id do usuário pra iden
     GET /curso
 Devolve todos os cursos existentes com o nome de seu criador;
 
+    GET /curso/id
+Devolve um curso pelo seu ID;
+
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
