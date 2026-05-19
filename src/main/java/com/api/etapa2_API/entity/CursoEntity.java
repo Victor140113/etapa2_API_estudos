@@ -92,7 +92,4 @@ public class CursoEntity {
 	public void setCursoDono(UsuarioEntity cursoDono) {
 		this.cursoDono = cursoDono;
 	}
-
-	
-	
 }

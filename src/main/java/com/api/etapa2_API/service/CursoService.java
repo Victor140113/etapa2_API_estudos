@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.api.etapa2_API.dto.request.CursoAtualizarRequest;
 import com.api.etapa2_API.dto.request.CursoCriarRequest;
 import com.api.etapa2_API.dto.response.CursoDefaultResponse;
 import com.api.etapa2_API.dto.response.CursoListarResponse;
@@ -65,6 +66,22 @@ public class CursoService {
 		return new CursoListarResponse(nomeCriador, curso.getTitulo(), curso.getDescricao(), curso.getDificuldade());
 		
 	}
+	
+	// Atualiza curso por ID;
+	public CursoDefaultResponse atualizarCursoPorId(Long id, CursoAtualizarRequest dados) {
+		CursoEntity cursoEntity = database.findById(id).orElse(null);
+		if(cursoEntity == null) return null;
+		
+		cursoEntity.setTitulo(dados.getTitulo());
+		cursoEntity.setDescricao(dados.getDescricao());
+		cursoEntity.setDificuldade(dados.getDificuldade());
+		
+		database.save(cursoEntity);
+		return new CursoDefaultResponse("Dados do curso atualizados!");
+		
+	}
+	
+	// Deleta curso por ID;
 	
 	//============================Métodos Internos=========================
 	
