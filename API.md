@@ -63,5 +63,14 @@ Atualiza dados do curso pelo seu ID;
     DELETE /curso/id
 Deleta um curso e seus matriculados pelo ID do curso;
 
+---
+
+### Matricula:
+
+    POST /matricula
+Matricula um usuário aluno em um curso
+
+---
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
+---
