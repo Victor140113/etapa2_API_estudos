@@ -36,10 +36,12 @@ public class MatriculaEntity {
 		
 	}
 	
-	public MatriculaEntity(LocalDate dataMatricula, int progresso, MatriculaStatus status) {
-		this.dataMatricula = dataMatricula;
+	public MatriculaEntity(int progresso, MatriculaStatus status, UsuarioEntity usuario, CursoEntity curso) {
+		this.dataMatricula = LocalDate.now();
 		this.progresso = progresso;
 		this.status = status;
+		this.usuario = usuario;
+		this.curso = curso;
 	}
 
 	public Long getId() {
@@ -72,6 +74,22 @@ public class MatriculaEntity {
 
 	public void setStatus(MatriculaStatus status) {
 		this.status = status;
+	}
+
+	public UsuarioEntity getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioEntity usuario) {
+		this.usuario = usuario;
+	}
+
+	public CursoEntity getCurso() {
+		return curso;
+	}
+
+	public void setCurso(CursoEntity curso) {
+		this.curso = curso;
 	}
 	
 }

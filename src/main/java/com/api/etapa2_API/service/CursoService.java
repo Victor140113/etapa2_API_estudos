@@ -94,7 +94,14 @@ public class CursoService {
 	//============================Métodos Internos=========================
 	
 	
-	
+	public CursoEntity getCursoPorId(Long id) {
+		
+		CursoEntity curso = database.findById(id).orElse(null);
+		if(curso == null) return null;
+		
+		return curso;
+		
+	}
 	
 	
 	//======================================================================
