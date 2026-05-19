@@ -32,7 +32,7 @@ public class UsuarioEntity {
 	@OneToMany(mappedBy = "cursoDono", fetch = FetchType.LAZY)
 	private List<CursoEntity> listaDeCursos = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	private List<MatriculaEntity> matricula = new ArrayList<>();
 	
 	public UsuarioEntity() {
