@@ -1,6 +1,23 @@
 # API prática
 
-  Exercício prático de API da **Etapa 2** dos estudos sobre a construção de uma API, a qual aborda relacionamentos de dados em Springboot/Banco de Dados.
+  Exercício prático de API da **Etapa 2** dos estudos sobre a construção de uma API, a qual aborda relacionamentos de dados em Springboot/Banco de Dados. A dinâmica é criar uma API REST do zero
+  sempre que concluir uma etapa, abordando todos os conteúdos estudados nas etapas anteriores.
+
+  ## Conteúdos da Etapa 2:
+
+* @OneToMany
+* @ManyToOne
+* @OneToOne
+* foreign key
+* entidades ligadas
+* listas dentro de entities
+* cascata (CascadeType)
+* fetch
+* relacionamento bidirecional
+* problemas de serialização
+* modelagem relacional aplicada
+
+---
 
 > [!NOTE]
 > O repositório do exercício da Etapa 1 corresponde ao [**PraticaSpringbootWebSQL**](https://github.com/Victor140113/PraticaSpringbootWebSQL).
@@ -39,6 +56,12 @@ Devolve todos os cursos existentes com o nome de seu criador;
 
     GET /curso/id
 Devolve um curso pelo seu ID;
+
+    PUT /curso/id
+Atualiza dados do curso pelo seu ID;
+
+    DELETE /curso/id
+Deleta um curso e seus matriculados pelo ID do curso;
 
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
