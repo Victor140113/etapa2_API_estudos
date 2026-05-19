@@ -3,12 +3,15 @@ package com.api.etapa2_API.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.etapa2_API.dto.request.CursoAtualizarRequest;
 import com.api.etapa2_API.dto.request.CursoCriarRequest;
 import com.api.etapa2_API.dto.response.CursoDefaultResponse;
 import com.api.etapa2_API.dto.response.CursoListarResponse;
@@ -45,5 +48,26 @@ public class CursoController {
 		if(curso == null) return ResponseEntity.status(404).build();
 		
 		return ResponseEntity.ok(curso);
+	}
+	
+	// Atualiza curso por ID;
+	@PutMapping("/curso/{id}")
+	public ResponseEntity<CursoDefaultResponse> atualizarCurso(@PathVariable Long id, @RequestBody CursoAtualizarRequest dados){
+		
+		CursoDefaultResponse response = service.atualizarCursoPorId(id, dados);
+		if(response == null) return ResponseEntity.status(404).build();
+		
+		return ResponseEntity.ok(response);
+		
+	}
+	
+	// Deleta curso por ID;
+	@DeleteMapping("/curso/{id}")
+	public ResponseEntity<CursoDefaultResponse> deletarCursoPorId(@PathVariable Long id){
+		
+		CursoDefaultResponse response = service.deletarCursoPorId(id);
+		if(response == null) return ResponseEntity.status(404).build();
+		
+		return ResponseEntity.ok(response);
 	}
 }

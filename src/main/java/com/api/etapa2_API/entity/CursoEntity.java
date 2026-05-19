@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.api.etapa2_API.enums.CursoDificuldade;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -31,7 +32,7 @@ public class CursoEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private UsuarioEntity cursoDono;
 	
-	@OneToMany(mappedBy = "curso")
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.REMOVE)
 	private List<MatriculaEntity> matricula = new ArrayList<>();
 	
 	public CursoEntity() {
@@ -92,7 +93,4 @@ public class CursoEntity {
 	public void setCursoDono(UsuarioEntity cursoDono) {
 		this.cursoDono = cursoDono;
 	}
-
-	
-	
 }
