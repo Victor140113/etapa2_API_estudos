@@ -70,6 +70,12 @@ Deleta um curso e seus matriculados pelo ID do curso;
     POST /matricula
 Matricula um usuário aluno em um curso
 
+    GET /matricula/usuario/id
+Devolve os cursos em que um aluno está matriculado;
+
+    GET /matricula/curso/id
+Devolve os alunos de um curso;
+
 ---
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
