@@ -3,6 +3,7 @@ package com.api.etapa2_API.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,5 +62,12 @@ public class CursoController {
 	}
 	
 	// Deleta curso por ID;
-	
+	@DeleteMapping("/curso/{id}")
+	public ResponseEntity<CursoDefaultResponse> deletarCursoPorId(@PathVariable Long id){
+		
+		CursoDefaultResponse response = service.deletarCursoPorId(id);
+		if(response == null) return ResponseEntity.status(404).build();
+		
+		return ResponseEntity.ok(response);
+	}
 }

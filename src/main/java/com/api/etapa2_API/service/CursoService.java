@@ -82,6 +82,14 @@ public class CursoService {
 	}
 	
 	// Deleta curso por ID;
+	public CursoDefaultResponse deletarCursoPorId(Long id) {
+		CursoEntity curso = database.findById(id).orElse(null);
+		if(curso == null) return null;
+		
+		database.delete(curso);
+		return new CursoDefaultResponse("Curso deletado com sucesso! (Matriculados também foram excluídos.)");
+		
+	}
 	
 	//============================Métodos Internos=========================
 	
