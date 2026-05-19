@@ -16,4 +16,7 @@ public interface MatriculaRepository extends JpaRepository<MatriculaEntity, Long
 	
 	// Retorna todas as matriculas de um usuário;
 	public List<MatriculaEntity> findAllByUsuario(UsuarioEntity usuario);
+	
+	// Retorna todas as matriculas de um curso;
+	public List<MatriculaEntity> findAllByCurso(CursoEntity curso);
 }
