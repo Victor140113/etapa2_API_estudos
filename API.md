@@ -79,7 +79,10 @@ Devolve os alunos de um curso;
     PUT /matricula/id
 Atualiza progresso e status de uma matricula;
 
+    DELETE /matricula/id
+Deleta uma matrícula (aluno sai de um curso) por ID;
+
 ---
 > [!IMPORTANT]
-> **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
+> **Este documento foi concluído, não haverão mais atualizações!**
 ---
