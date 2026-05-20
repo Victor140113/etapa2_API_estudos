@@ -82,5 +82,14 @@ public class MatriculaService {
 		return new MatriculaDefaultResponse("Matrícula atualizada!");
 	}
 	
+	// Deletar matrícula;
+	public MatriculaDefaultResponse deletarMatricula(Long id) {
+		
+		if(!database.existsById(id)) return null;
+		
+		database.deleteById(id);
+		return new MatriculaDefaultResponse("Você saiu do curso!");
+	}
+	
 	//==============================================================================
 }
