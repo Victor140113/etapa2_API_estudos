@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.api.etapa2_API.dto.request.MatriculaAlunoRequest;
+import com.api.etapa2_API.dto.request.MatriculaAtualizarRequest;
 import com.api.etapa2_API.dto.response.MatriculaCursoResponse;
 import com.api.etapa2_API.dto.response.MatriculaDefaultResponse;
 import com.api.etapa2_API.dto.response.MatriculaUsuarioResponse;
@@ -66,6 +67,19 @@ public class MatriculaService {
 		if(curso == null) return null;
 		
 		return database.findAllByCurso(curso).stream().map(matricula -> new MatriculaCursoResponse(matricula.getUsuario().getNome(), matricula.getDataMatricula())).toList();
+	}
+	
+	// Atualizar progresso e status de uma matricula;
+	public MatriculaDefaultResponse atualizarMatricula(Long id, MatriculaAtualizarRequest dados) {
+		
+		MatriculaEntity matricula = database.findById(id).orElse(null);
+		if(matricula == null) return null;
+		
+		matricula.setProgresso(dados.getProgresso());
+		matricula.setStatus(dados.getStatus());
+		
+		database.save(matricula);
+		return new MatriculaDefaultResponse("Matrícula atualizada!");
 	}
 	
 	//==============================================================================
