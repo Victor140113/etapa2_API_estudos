@@ -76,6 +76,9 @@ Devolve os cursos em que um aluno está matriculado;
     GET /matricula/curso/id
 Devolve os alunos de um curso;
 
+    PUT /matricula/id
+Atualiza progresso e status de uma matricula;
+
 ---
 > [!IMPORTANT]
 > **Este documento está sendo atualizado de acordo com as rotas adicionadas.**
